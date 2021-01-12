@@ -3,15 +3,15 @@
 # Register your models here.
 from django.contrib import admin
 
-from .models import Doacao, TipoPlantas, TipoDoacoes
+from .models import Doacao, TipoPlanta, TipoDoacao
 
 
-@admin.register(TipoPlantas)
+@admin.register(TipoPlanta)
 class PlantasAdmin(admin.ModelAdmin):
     list_display = ["nome", "slug", "created", "modified"]
 
 
-@admin.register(TipoDoacoes)
+@admin.register(TipoDoacao)
 class DoacoesAdmin(admin.ModelAdmin):
     list_display = ["nome", "slug", "created", "modified"]
 

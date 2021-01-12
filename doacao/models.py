@@ -66,4 +66,4 @@ class Doacao(TimeStampedModel):
         return self.descricao
 
     def get_absolute_url(self):
-        return reverse("doacao:detalhes", kwargs={"slug": self.slug})
+        return reverse("doacao:detail", kwargs={"slug": self.slug})
