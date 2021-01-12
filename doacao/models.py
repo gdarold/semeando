@@ -11,7 +11,7 @@ class AvailableManager(models.Manager):
         return super().get_queryset().filter(is_available=True)
 
 
-class TipoPlantas(TimeStampedModel):
+class TipoPlanta(TimeStampedModel):
     nome = models.CharField(max_length=255, unique=True)
     slug = AutoSlugField(unique=True, always_update=False, populate_from="nome")
 
@@ -27,7 +27,7 @@ class TipoPlantas(TimeStampedModel):
         return reverse("doacao:list_by_tipo_planta", kwargs={"slug": self.slug})
 
 
-class TipoDoacoes(TimeStampedModel):
+class TipoDoacao(TimeStampedModel):
     nome = models.CharField(max_length=255, unique=True)
     slug = AutoSlugField(unique=True, always_update=False, populate_from="nome")
 
@@ -45,9 +45,9 @@ class TipoDoacoes(TimeStampedModel):
 
 class Doacao(TimeStampedModel):
     doador = models.ForeignKey(User, on_delete=models.CASCADE)
-    tipo_doacao = models.ForeignKey(TipoDoacoes, related_name="doacao",
+    tipo_doacao = models.ForeignKey(TipoDoacao, related_name="doacao",
                                     on_delete=models.CASCADE)
-    tipo_planta = models.ForeignKey(TipoPlantas, related_name="doacao",
+    tipo_planta = models.ForeignKey(TipoPlanta, related_name="doacao",
                                     on_delete=models.CASCADE)
     descricao = models.TextField(blank=True)
     slug = AutoSlugField(unique=True, always_update=False, populate_from="tipo_doacao")

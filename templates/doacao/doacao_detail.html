@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ doacao.nome }}{% endblock title %}
+
+{% block content %}
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-lg-3 mb-3 mb-lg-0">
+            {% if doacao.imagem %}
+            <img class="container-fluid" src="/media/{{doacao.imagem}}" alt="">
+            {% else %}
+            <img class="card-img-top" src="{% static 'images/no_image.jpg' %}" alt="">
+            {% endif %}
+        </div>
+        <div class="col-lg-9">
+            <h1 class="font-weight-bold">{{ doacao.nome }}</h1>
+            <h2>R$ {{ doacao.peso }}</h2>
+            <p>{{ doacao.descricao }}</p>
+            <p>
+                Voltar para o catálogo de
+                <a class="text-decoration-none" href="{{ doacao.tipo_doacao.get_absolute_url }}">
+                    {{ doacao.tipo_doacao.nome }}
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

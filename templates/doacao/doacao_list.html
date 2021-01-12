@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load doacao_tags %}
+
+{% block title %}
+{% if tipo_doacao %}
+{{ tipo_doacao.nome }}
+{% else %}
+Doações
+{% endif %}
+{% endblock title %}
+
+{% block content %}
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-lg-3">
+            <ul class="list-group mb-3 mb-lg-0">
+                <a class="text-decoration-none list-group-item list-group-item-light
+                {% if not tipo_doacao %}active{% endif %}" href="{% url 'doacao:list' %}">
+                    Todas as doações
+                </a>
+
+                {% for cat in tipos_doacoes %}
+                    <a class="text-decoration-none list-group-item list-group-item-light {% if tipo_doacao == cat %}active{% endif %}"
+                        href="{{ cat.get_absolute_url }}">
+                        {{ cat.nome }}
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-lg-9">
+            <div class="card-deck mb-3">
+                {% for doacao in doacao_list %}
+                <div class="card">
+                    <a href="{{ doacao.get_absolute_url }}">
+                        {% if product.image %}
+                        <img class="card-img-top" src="/media/{{doacao.imagem}}" alt="">
+                        {% else %}
+                        <img class="card-img-top" src="{% static 'images/no_image.jpg' %}" alt="">
+                        {% endif %}
+                    </a>
+
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <a class="text-decoration-none text-dark" href="{{ doacao.get_absolute_url }}">
+                            <h5 class="card-title">{{ doacao.nome }}</h5>
+                        </a>
+                        <a class="text-decoration-none text-dark" href="{{ doacao.get_absolute_url }}">
+                            <p class="card-text font-weight-bold">R$ {{ doacao.peso }}</p>
+                        </a>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+            </div>
+            <div class="card-deck mb-3">
+                {% endif %}
+                {% endfor %}
+
+                {% if doacao_list|length|remainder == 2 %}
+                <div class="card border-0"></div>
+                {% elif doacao_list|length|remainder == 1 %}
+                <div class="card border-0"></div>
+                <div class="card border-0"></div>
+                {% endif %}
+            </div>
+
+            {% if is_paginated %}
+            {% include "pagination.html" with page=page_obj %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

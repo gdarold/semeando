@@ -1,9 +1,29 @@
+from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView, ListView
+
+from .models import TipoDoacao, Doacao
 
 
-# Create your views here.
-class ProductDetailView(object):
-    pass
+class ProductDetailView(DetailView):
+    queryset = Doacao.available.all()
 
 
-class ProductListView(object):
-    pass
+class ProductListView(ListView):
+    tipo_doacao = None
+    paginate_by = 6
+
+    def get_queryset(self):
+        queryset = Doacao.available.all()
+
+        tipo_doacao_slug = self.kwargs.get("slug")
+        if tipo_doacao_slug:
+            self.tipo_doacao = get_object_or_404(TipoDoacao, slug=tipo_doacao_slug)
+            queryset = queryset.filter(tipo_doacao=self.tipo_doacao)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tipo_doacao"] = self.tipo_doacao
+        context["tipos_doacoes"] = TipoDoacao.objects.all()
+        return context

@@ -130,7 +130,6 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
-
 # Django-allauth
 
 AUTHENTICATION_BACKENDS = [
