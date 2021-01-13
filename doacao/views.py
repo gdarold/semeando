@@ -4,11 +4,11 @@ from django.views.generic import DetailView, ListView
 from .models import TipoDoacao, Doacao
 
 
-class ProductDetailView(DetailView):
+class DoacaoDetailView(DetailView):
     queryset = Doacao.available.all()
 
 
-class ProductListView(ListView):
+class DoacaoListView(ListView):
     tipo_doacao = None
     paginate_by = 6
 
