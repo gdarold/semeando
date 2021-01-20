@@ -1,17 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from endereco.models import Endereco, Cidade, Estado
-
-
-@admin.register(Cidade)
-class CidadeAdmin(admin.ModelAdmin):
-    list_display = ["nome", "slug", "created", "modified"]
-
-
-@admin.register(Estado)
-class EstadoAdmin(admin.ModelAdmin):
-    list_display = ["nome", "slug", "created", "modified"]
+from endereco.models import Endereco
 
 
 @admin.register(Endereco)
@@ -23,9 +13,8 @@ class EnderecoAdmin(admin.ModelAdmin):
         "bairro",
         "numero",
         "complemento",
-        "cidade",
-        "slug",
-        "uf",
+
+         "uf",
         "is_available",
         "created",
         "modified",

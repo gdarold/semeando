@@ -42,11 +42,15 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "crispy_forms",
+    "debug_toolbar",
+    "widget_tweaks",
     # local
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
     "doacao.apps.DonationConfig",
     "endereco.apps.AddressConfig",
+    "cart.apps.CartConfig",
+
 ]
 
 AUTH_USER_MODEL = "users.User"
@@ -154,3 +158,16 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+# django-debug
+
+import socket  # noqa
+
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
+
+# Cart
+
+CART_SESSION_ID = "cart"
+CART_ITEM_MAX_QUANTITY = 20

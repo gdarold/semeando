@@ -1,23 +1,30 @@
-from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, ListView
-
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from endereco.models import Endereco
 
 
-class EnderecoDetailView(DetailView):
-    queryset = Endereco.available.all()
+class EnderecoCreate(CreateView):
+    model = Endereco
+    fields = ['usuario', 'cep', 'logradouro', 'bairro', 'numero', 'complemento', 'cidade', 'uf', 'is_available']
+
+    def form_valid(self, form):
+        endereco = form.save(commit=False)
+        endereco.usuario = self.request.user
+        endereco.save()
+
+        return super(EnderecoCreate, self).form_valid(form)
 
 
-class EnderecoListView(ListView):
-    cidade = None
-    paginate_by = 6
+class EnderecoList(ListView):
+    model = Endereco
 
-    def get_queryset(self):
-        queryset = Endereco.available.all()
 
-        #cidade_slug = self.kwargs.get("slug")
-        #if cidade_slug:
-         #   self.cidade = get_object_or_404(slug=cidade_slug)# deve dar pau aqui
-          #  queryset = queryset.filter(cidade=self.cidade)
+class EnderecoEdit(UpdateView):
+    model = Endereco
+    fields = ['cep', 'logradouro', 'bairro', 'numero', 'complemento', 'cidade', 'uf']
 
-        return queryset
+
+class EnderecoDelete(DeleteView):
+    model = Endereco
+
+    success_url = reverse_lazy('endereco:list')

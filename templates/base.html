@@ -27,6 +27,17 @@
                         <a href="{% url 'doacao:list' %}" class="nav-link lead mr-4 font-weight-bold">Doações</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{% url 'cart:detail' %}" class="nav-link lead mr-4 font-weight-bold">Meu Carrinho</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a href="{% url 'endereco:list' %}" class="nav-link lead mr-4 font-weight-bold">Perfil</a>
+                    </li>
+                    {% endif %}
+
+                    <li class="nav-item">
                         <a href="{% url 'pages:about' %}" class="nav-link lead mr-4 font-weight-bold">Sobre Nós</a>
                     </li>
                     {% if user.is_authenticated %}

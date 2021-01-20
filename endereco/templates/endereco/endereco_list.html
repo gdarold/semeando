@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table class="table table-hover table-bordered table-striped table-dark">
+            <thead>
+                <tr>
+
+                    <th scope="col">Cep</th>
+                    <th scope="col">Rua</th>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Complemento</th>
+                    <th scope="col">Bairro</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Deletar</th>
+
+
+                </tr>
+
+
+            </thead>
+            <tbody>
+
+
+
+
+
+        {% for enderec in object_list %}
+            <tr>
+
+                        <td>{{ enderec.cep }}</td>
+                        <td>{{ enderec.logradouro }}</td>
+                        <td>{{ enderec.numero }}</td>
+                        <td>{{ enderec.complemento }}</td>
+                        <td>{{ enderec.bairro }}</td>
+                        <td>{{ enderec.cidade }}</td>
+                        <td>{{ enderec.uf }}</td>
+
+
+
+                        <td><a href="{% url 'endereco:edit' enderec.id %}" class="edit-item">
+                                <i class="fas fa-edit"></i>edit</a></td>
+                        <td><a href="{% url 'endereco:del' enderec.id %}" class="trash-item">
+                            <i class="fas fa-trash"></i>a</a></td>
+
+
+                    </tr>
+
+                {% endfor %}
+
+
+
+            </tbody>
+
+
+        </table>
+
+
+    <a href="{% url 'endereco:new' %}" class="btn btn-primary">Novo</a>
+{% endblock %}

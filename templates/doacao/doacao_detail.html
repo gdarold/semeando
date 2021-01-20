@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block title %}{{ doacao.nome }}{% endblock title %}
 
@@ -19,6 +20,15 @@
             <h1 class="font-weight-bold">{{ doacao.nome }}</h1>
             <h2>R$ {{ doacao.peso }}</h2>
             <p>{{ doacao.descricao }}</p>
+            <form class="form-group" action="{% url 'cart:add' doacao.id %}" method="post">
+                <p class="form-inline">
+                    {{ form.quantidade.label_tag }}
+                    {% render_field form.quantidade class+="form-control ml-sm-3" %}
+                    {{ form.override }}
+                </p>
+                {% csrf_token %}
+                <input class="btn btn-success" type="submit" value="Adicionar ao Carrinho">
+            </form>
             <p>
                 Voltar para o catálogo de
                 <a class="text-decoration-none" href="{{ doacao.tipo_doacao.get_absolute_url }}">
