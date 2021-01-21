@@ -13,10 +13,10 @@
     <table class="table">
         <thead>
             <tr class="bg-light">
-                <th scope="col">Produto</th>
+                <th scope="col">Descricao</th>
                 <th scope="col">Quantidade</th>
-                <th scope="col">Preço Unitário</th>
-                <th scope="col">Preço Total</th>
+                <th scope="col">Peso Unitário</th>
+                <th scope="col">Peso Total</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -26,7 +26,7 @@
             <tr>
                 <td class="align-middle">
                     <a target="_blank" class="text-decoration-none" href="{{ doacao.get_absolute_url }}">
-                        {{ doacao.name }}
+                        {{ doacao.descricao }}
                     </a>
                 </td>
                 <td class="align-middle">
@@ -34,17 +34,17 @@
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col">
-                                {% render_field item.update_quantity_form.quantity class+="form-control" %}
+                                {% render_field item.update_quantidade_form.quantidade class+="form-control" %}
                             </div>
                             <div class="col">
                                 <input class="btn btn-info" type="submit" value="Atualizar">
                             </div>
                         </div>
-                        {{ item.update_quantity_form.override }}
+                        {{ item.update_quantidade_form.override }}
                     </form>
                 </td>
-                <td class="align-middle">R$ {{ item.peso }}</td>
-                <td class="align-middle">R$ {{ item.total_peso }}</td>
+                <td class="align-middle"> {{ item.peso }} kg</td>
+                <td class="align-middle"> {{ item.total_peso }} kg</td>
                 <td class="align-middle text-right">
                     <form action="{% url 'cart:remove' doacao.id %}" method="post">
                         {% csrf_token %}
@@ -58,7 +58,7 @@
                 <td class="font-weight-bold">Total</td>
                 <td></td>
                 <td></td>
-                <td class="font-weight-bold">R$ {{ cart.get_total_peso }}</td>
+                <td class="font-weight-bold"> {{ cart.get_total_peso }} kg</td>
                 <td></td>
             </tr>
         </tbody>
@@ -68,11 +68,11 @@
     {% endif %}
     <p class="text-right">
         <a class=" btn btn-primary" href="{% url 'doacao:list' %}">
-            Continuar comprando
+            Incluir novos itens
         </a>
 
         <a class="btn btn-success {% if not cart %}disabled{% endif %}" href="#">
-            Finalizar compra
+            Finalizar Pedido
         </a>
     </p>
 </div>

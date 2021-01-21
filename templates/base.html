@@ -26,11 +26,12 @@
                     <li class="nav-item">
                         <a href="{% url 'doacao:list' %}" class="nav-link lead mr-4 font-weight-bold">Doações</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url 'cart:detail' %}" class="nav-link lead mr-4 font-weight-bold">Meu Carrinho</a>
                     </li>
 
-                    {% if user.is_authenticated %}
+
 
                     <li class="nav-item">
                         <a href="{% url 'endereco:list' %}" class="nav-link lead mr-4 font-weight-bold">Perfil</a>
@@ -42,14 +43,14 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Sair</a>
+                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_logout' %}">Sair</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Entrar</a>
+                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_login' %}">Entrar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Cadastro</a>
+                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_signup' %}">Cadastro</a>
                     </li>
                     {% endif %}
 
