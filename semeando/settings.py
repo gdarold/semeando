@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "doacao.apps.DonationConfig",
     "endereco.apps.AddressConfig",
     "cart.apps.CartConfig",
+    "orders.apps.OrdersConfig",
 
 ]
 
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'semeando.urls'

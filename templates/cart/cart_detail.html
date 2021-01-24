@@ -71,7 +71,7 @@
             Incluir novos itens
         </a>
 
-        <a class="btn btn-success {% if not cart %}disabled{% endif %}" href="#">
+        <a class="btn btn-success {% if not cart %}disabled{% endif %}" href="{% url 'orders:order_create' %}">
             Finalizar Pedido
         </a>
     </p>

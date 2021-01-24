@@ -26,6 +26,7 @@ urlpatterns = [
     path("doacao/", include("doacao.urls", namespace="doacao")),
     path("endereco/", include("endereco.urls")),
     path("cart/", include("cart.urls")),
+    path('orders/', include('orders.urls', namespace='orders')),
 
 
     path("", include("pages.urls", namespace="pages")),
