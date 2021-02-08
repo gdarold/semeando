@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+
+<body style="background: url(../img/wallpaper.png) #475d62; background-size: cover;">
+ {% block main %}
+  <nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+
+
+    		<li class="breadcrumb-item active" aria-current="page">Perfil</li>
+
+
+  		</ol>
+  </nav>
+<div class="container "style="background-color: white;">
+        <div class="row my-2">
+            <div class="col-lg-8 order-lg-2">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Mensagens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Editar</a>
+                    </li>
+                </ul>
+                <div class="tab-content py-4">
+                    <div class="tab-pane active" id="profile">
+                        <h5 class="mb-3">Perfil do Usuario</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <h6>Nome Completo</h6>
+
+                                <p>
+                                    {{ users.first_name }} {{ users.last_name }}
+                                </p>
+                                <h6>Email</h6>
+                                <p>
+                                    {{ users.email }}
+                                </p>
+                                <h6>Telefone</h6>
+                                <p>
+                                    {{ users.wats }}
+                                </p>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <h6>Funcoes</h6>
+
+                                
+                            </div>
+                            <div class="col-md-12">
+                                <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Ultimos Feedbacks</h5>
+                                <table class="table table-sm table-hover table-striped">
+                                    <tbody>                                    
+                                        <tr>
+                                            <td>
+                                                <strong>Serviço</strong> Feito em <strong>'com capricho'</strong>
+                                            </td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <div class="alert alert-info alert-dismissable">
+                            <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                        </div>
+                        <table class="table table-hover table-striped">
+                            <tbody>                                    
+                                <tr>
+                                    <td>
+                                       <span class="float-right font-weight-bold">Horario</span> Mensagem
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody> 
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="edit">
+                        <form role="form">
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Primeiro Nome</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" value="{{ users.first_name }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Sobrenome</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" value="{{ users.last_name }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="email" value="{{ users.email }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Telefone</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" value="{{ users.wats }}" placeholder="Endereco">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Usuario</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" value="{{ users.user_novo }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Senha</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="password" value="{{ users.password }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Confirmar Senha</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="password" value="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label"></label>
+                                <div class="col-lg-9">
+                                    <input type="reset" class="btn btn-secondary" value="Cancelar">
+                                    <input type="button" class="btn btn-primary" value="Salvar">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-1 text-center">
+                <img src="{{ users.photo.url }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+               
+                <label class="custom-file">
+                    <input type="file" id="file" class="custom-file-input">
+                    <a href="#"><span class="custom-file-control">Mudar imagem</span></a>
+                </label>
+                <br>
+
+
+            </div>
+        </div>
+     <div>
+        <div class="col-lg-9">
+            <input type="button" class="btn btn-primary" value="Perfil Prestador Serviços">
+
+
+            <input type="button" class="btn btn-primary" value="Avaliações">
+        </div>
+
+          <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+    </div>
+    </div>
+
+
+
+
+{% endblock%}
+</body>
+
+</html>

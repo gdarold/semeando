@@ -36,7 +36,7 @@ Doações
                 <div class="card">
                     <a href="{{ doacao.get_absolute_url }}">
                         {% if doacao.imagem %}
-                        <img class="card-img-top" src="/media/{{doacao.imagem}}" alt="">
+                        <img class="card-img-top" src="/media/{{doacao.imagem}}" alt="imagem doacao">
                         {% else %}
                         <img class="card-img-top" src="{% static 'images/no_image.jpg' %}" alt="">
                         {% endif %}

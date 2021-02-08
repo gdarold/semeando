@@ -1,7 +1,20 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, CreateView
 from cart.forms import CartAddDoacaoForm
 from .models import TipoDoacao, Doacao
+
+
+class DoacaoCreate(CreateView):
+    model = Doacao
+    fields = '__all__'
+
+    def form_valid(self, form):
+        doacao = form.save(commit=False)
+        doacao.usuario = self.request.user
+
+        doacao.save()
+
+        return super(DoacaoCreate, self).form_valid(form)
 
 
 class DoacaoDetailView(DetailView):
@@ -28,3 +41,15 @@ class DoacaoListView(ListView):
         context["tipo_doacao"] = self.tipo_doacao
         context["tipos_doacoes"] = TipoDoacao.objects.all()
         return context
+
+
+class DoacaoUser(ListView):
+    model = Doacao
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+    def get_queryset(self):
+        usuario = self.request.user.username
+        return Doacao.objects.filter(doador=usuario)
