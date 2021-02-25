@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Thank you
+  Obrigado
 {% endblock %}
 
 {% block content %}
-  <h1>Thank you</h1>
-  <p>Your order has been successfully completed. Your order number is
+  <h1>Obrigado</h1>
+  <p>Seu pedido foi concluido com sucesso. O número de seu pedido é:
   <strong>{{ order.id }}</strong>.</p>
+<button class="btn btn-primary"><a href="{% url 'orders:order_detail' order.id %}">pedidos</a></button>
 {% endblock %}

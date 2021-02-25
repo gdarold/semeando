@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     "crispy_forms",
     "debug_toolbar",
     "widget_tweaks",
+    "localflavor",
+
+
     # local
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
@@ -172,4 +175,4 @@ INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
 # Cart
 
 CART_SESSION_ID = "cart"
-CART_ITEM_MAX_QUANTITY = 20
+CART_ITEM_MAX_QUANTITY = 1

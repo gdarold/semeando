@@ -24,11 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("doacao/", include("doacao.urls", namespace="doacao")),
-    path("endereco/", include("endereco.urls")),
-    path("cart/", include("cart.urls")),
+    path("endereco/", include("endereco.urls", namespace="endereco")),
+    path("cart/", include("cart.urls", namespace="cart")),
     path('orders/', include('orders.urls', namespace='orders')),
-
-
+    path('users/', include('users.urls', namespace='users')),
     path("", include("pages.urls", namespace="pages")),
 
 ]

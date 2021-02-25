@@ -17,18 +17,25 @@
             {% endif %}
         </div>
         <div class="col-lg-9">
-            <h1 class="font-weight-bold">{{ doacao.nome }}</h1>
-            <h2>R$ {{ doacao.peso }}</h2>
+            <h1 class="font-weight-bold">{{ doacao.titulo }}</h1>
+
             <p>{{ doacao.descricao }}</p>
+            {% if user.is_authenticated %}
             <form class="form-group" action="{% url 'cart:add' doacao.id %}" method="post">
                 <p class="form-inline">
                     {{ form.quantidade.label_tag }}
                     {% render_field form.quantidade class+="form-control ml-sm-3" %}
                     {{ form.override }}
                 </p>
+
                 {% csrf_token %}
                 <input class="btn btn-success" type="submit" value="Adicionar ao Carrinho">
+
+
             </form>
+
+
+            {% endif %}
             <p>
                 Voltar para o catálogo de
                 <a class="text-decoration-none" href="{{ doacao.tipo_doacao.get_absolute_url }}">
@@ -36,6 +43,12 @@
                 </a>
             </p>
         </div>
+        {% if user.is_authenticated %}
+
+        {% else %}
+            <h2>Para adicionar um item no carrinho é necessário fazer login</h2>
+        {% endif %}
+
     </div>
 </div>
 

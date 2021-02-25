@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+  <div class="container my-3">
+      <div class='row'>
+        <div class='col'>
+
+            <div class='col-md-6 col-12 mx-auto'>
+              <p>{{ content }}</p>
+            <form class='contact-form' method='POST' action='{% url "pages:contact" %}'>
+
+
+
+            {% csrf_token %}
+              <input type='text' class='form-control' placeholder="Name" name='fullname' value="{{ user.get_full_name }}">
+              <input type='email' class='form-control' placeholder="Email" name='email' value="{{ user.email }}">
+              <textarea name='content' class='form-control' placeholder="Seu comentario"></textarea>
+              <button type='submit' class='btn btn-success'>Submit</button>
+            </form>
+
+        </div>
+      </div>
+  </div>
+{% endblock %}
+
+
+
+
+
+    <!--
+    <form id="contact_form" action="#" method="POST" enctype="multipart/form-data" class="form">
+
+      <div class="row">
+        <label class="required" for="name">Your name:</label><br />
+        <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+        <span id="name_validation" class="error_message"></span>
+      </div>
+      <div class="row">
+        <label class="required" for="email">Your email:</label><br />
+        <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+        <span id="email_validation" class="error_message"></span>
+      </div>
+      <div class="row">
+        <label class="required" for="message">Your message:</label><br />
+        <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+        <span id="message_validation" class="error_message"></span>
+      </div>
+
+        <input id="submit_button" type="submit" value="Send email" />
+    </form>
+
+            <form method='POST'>
+              {% csrf_token %}
+              <input type='text' class='form-control' placeholder="Name" name='fullname'>
+              <input type='email' class='form-control' placeholder="Email" name='email'>
+              <textarea name='content' class='form-control' placeholder="Your content"></textarea>
+              <button type='submit' class='btn btn-success'>Submit</button>
+            </form>-->
+
+

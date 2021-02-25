@@ -14,6 +14,6 @@ urlpatterns = [
 
     path('new/', EnderecoCreate.as_view(), name='new'),
     path('list/', EnderecoList.as_view(), name='list'),
-    path('update/<int:pk>/', EnderecoEdit.as_view(), name='edit'),
-    path('delete/<int:pk>/', EnderecoDelete.as_view(), name='del'),
+    path('update/<int:pk>/', EnderecoEdit.as_view(), name='update'),
+    path('delete/<int:pk>/', EnderecoDelete.as_view(), name='delete'),
 ]

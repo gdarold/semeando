@@ -36,7 +36,7 @@ Doações
                 <div class="card">
                     <a href="{{ doacao.get_absolute_url }}">
                         {% if doacao.imagem %}
-                        <img class="card-img-top" src="/media/{{doacao.imagem}}" alt="imagem doacao">
+                        <img class="card-img-top" src="/media/{{doacao.imagem}}" alt="imagem doacao" width="250px" height="250px">
                         {% else %}
                         <img class="card-img-top" src="{% static 'images/no_image.jpg' %}" alt="">
                         {% endif %}
@@ -44,7 +44,7 @@ Doações
 
                     <div class="card-body d-flex flex-column justify-content-between">
                         <a class="text-decoration-none text-dark" href="{{ doacao.get_absolute_url }}">
-                            <h5 class="card-title">{{ doacao.nome }}</h5>
+                            <h5 class="card-title">{{ doacao.titulo }}</h5>
                         </a>
                         <a class="text-decoration-none text-dark" href="{{ doacao.get_absolute_url }}">
                             <p class="card-text font-weight-bold">Quantidade {{ doacao.quantidade }}</p>

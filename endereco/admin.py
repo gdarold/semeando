@@ -7,6 +7,7 @@ from endereco.models import Endereco
 @admin.register(Endereco)
 class EnderecoAdmin(admin.ModelAdmin):
     list_display = [
+        "id",
         "usuario",
         "cep",
         "logradouro",

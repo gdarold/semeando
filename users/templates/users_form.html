@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="container my-3 table-responsive">
+        <div class="form-container">
+             <div class="image-holder"></div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2 class="text-center"><strong>Cadastrar</strong>&nbsp;Usuário</h2>
+                <div class="form-group"><input class="form-control" type="text" name="first_name" placeholder="Nome" required></div>
+                <div class="form-group"><input class="form-control" type="text" name="last_name" placeholder="Sobrenome" required></div>
+
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" value="{{ user.email }}" required></div>
+                <div class="form-group"><input class="form-control" type="text" name="cpf" placeholder="informe cpf"></div>
+
+                <div class="form-group"><input class="form-control" type="tel" name="telefone" placeholder="telefone contato" required></div>
+
+
+                <div class="form-group"></div>
+                <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">Aceito os termos de uso.</label></div>
+
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Avançar</button></div>
+
+
+            </form>
+        </div>
+    </div>
+
+{% endblock%}
+</body>
+
+</html>

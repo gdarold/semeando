@@ -6,7 +6,7 @@
     <table class="table">
             <thead>
                 <tr>
-
+                    <th scope="col">Usuário</th>
                     <th scope="col">Cep</th>
                     <th scope="col">Rua</th>
                     <th scope="col">Numero</th>
@@ -30,7 +30,7 @@
 
         {% for enderec in object_list %}
             <tr class="bg-light">
-
+                        <td class="align-middle">{{ enderec.usuario }}</td>
                         <td class="align-middle">{{ enderec.cep }}</td>
                         <td class="align-middle">{{ enderec.logradouro }}</td>
                         <td class="align-middle">{{ enderec.numero }}</td>
@@ -41,10 +41,10 @@
 
 
 
-                        <td class="align-middle"><a href="{% url 'endereco:edit' enderec.id %}" class="edit-item">
-                                <i class="fas fa-edit"></i>edit</a></td>
-                        <td class="align-middle"><a href="{% url 'endereco:del' enderec.id %}" class="trash-item">
-                            <i class="fas fa-trash"></i>a</a></td>
+                        <td class="align-middle"><a href="{% url 'endereco:update' enderec.id %}" class="edit-item">
+                                <i class="fas fa-edit"></i></a></td>
+                        <td class="align-middle"><a href="{% url 'endereco:delete' enderec.id %}" class="trash-item">
+                            <i class="fas fa-trash"></i></a></td>
 
 
                     </tr>
@@ -60,5 +60,8 @@
 
 
     <a href="{% url 'endereco:new' %}" class="btn btn-primary">Novo</a>
+    <a href="{% url 'users:profile' %}" class="btn btn-primary">Voltar perfil</a>
+
+
 </div>
 {% endblock %}

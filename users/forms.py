@@ -11,3 +11,4 @@ class UserChangeForm(forms.UserChangeForm):
 class UserCreationForm(forms.UserCreationForm):
     class Meta(forms.UserCreationForm.Meta):
         model = User
+

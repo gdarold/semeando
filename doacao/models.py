@@ -49,10 +49,11 @@ class Doacao(TimeStampedModel):
                                     on_delete=models.CASCADE)
     tipo_planta = models.ForeignKey(TipoPlanta, related_name="doacao",
                                     on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=20, blank=False)
     descricao = models.TextField(blank=True)
     slug = AutoSlugField(unique=True, always_update=False, populate_from="tipo_doacao")
     imagem = models.ImageField(upload_to="doacao/%Y/%m/%d", blank=True)
-    peso = models.DecimalField(max_digits=10, decimal_places=2)
+    peso = models.DecimalField(max_digits=10, decimal_places=2, default=0.1)
     quantidade = models.DecimalField(max_digits=10, decimal_places=2)
     is_available = models.BooleanField(default=True)
 
@@ -63,7 +64,7 @@ class Doacao(TimeStampedModel):
         ordering = ("tipo_doacao",)
 
     def __str__(self):
-        return self.descricao
+        return self.titulo
 
     def get_absolute_url(self):
         return reverse("doacao:detail", kwargs={"slug": self.slug})
