@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import DoacaoDetailView, DoacaoListView, DoacaoCreate, DoacaoUser
+from .views import DoacaoDetailView, DoacaoListView, DoacaoCreate, DoacaoUser, DoacaoEdit
 
 app_name = "doacao"
 
@@ -11,5 +11,6 @@ urlpatterns =[
     path("<slug:slug>/", DoacaoDetailView.as_view(), name="detail"),
     path("tipo_doacao/<slug:slug>/", DoacaoListView.as_view(), name="list_by_tipo_doacao"),
     path("minhas_doacoes/", DoacaoUser.as_view(), name="list_by_minhas_doacoes"),
+    path('update/<int:pk>/', DoacaoEdit.as_view(), name='update'),
 
 ]

@@ -1,80 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Semeando
+{% block title %}
+
+Semeando
 
 
 {% endblock %}
 
 {% block content %}
-<h3>
-<p>Nome: Jaqueline da Silva Nº 19 <span> | </span>
-   Nome: Gabriela Madureira Nº 13 </p>
-</h3>
-
-<div class="divFormulario">
-<form >
-
-<fieldset class="fieldPrazo">
-<legend>Consultar Prazos Preços Correios </legend>
+<div class="container my-3">
+    <h1>Bem vindo a Site semeando</h1><br>
+    <h3>Nossa missão é conectar as pessoas que desejam doar com as pessoas que pretendem
+        receber doações</h3>
+        <br>
+        <br>
+    <h5>Fique a vontade para explorar a lista de doações, e se quiser receber alguma ou
+        fazer doações, faça seu cadastro</h5>
 
 
-<label>CEP Origem:</label>
-<input type="text"  id="cepOrigem" name="cepOrigem"size="10" maxlength="8" placeholder="09900000">
-
-<label>CEP Destino:</label>
-<input type="text"   id="cepDestino"  name="cepDestino" size="10" maxlength="8" placeholder="09900000">
-</br> </br>
-
-Formato:<select name="formato" id="formato">
-		<option value="envelope">Envelope</option>
-		<option value="rolo">Rolo</option>
-		<option value="caixa">Caixa</option>
-		</select>
-
- </br> </br>
 
 
-   <label>Peso: </label>
-   <input type="text" id="peso" name="peso" size="10"  maxlength="4" placeholder="00.00">
-
-   <label>Altura:</label>
-   <input type="text"   id="altura"  name="altura" size="10"  maxlength="4" placeholder="00.00" >
-</br> </br>
-   <label>Comprimento:
-    </label><input type="text"  id="comp" name="comp" size="10" maxlength="4" placeholder="00.00" >
-
-   <label>Largura: </label>
-   <input type="text"  size="10" id="largura"  name="largura" maxlength="4" placeholder="00.00">
-
-</br> </br>
-Serviço:<select name="servico" id="servico">
-		<option value="pac">PAC</option>
-		<option value="sedex">Sedex</option>
-		<option value="sedex10">Sedex 10</option>
-</select>
-
-</fieldset>
-
-
-<button id="botao" onclick="calcularFrete();" > Calcular</button>
-
-
-<fieldset id="estiloResultado">
-<legend >Resultado</legend>
-   <label>Valor: </label>
-   <input type="text"  id="valor" name="valor" placeholder="R$: 00.00" value="" disabled>
-
-   <label>Prazo entrega: </label>
-   <input type="text"  id="prazo" name="prazo" placeholder="0 dias"  value="" disabled>
-
-</fieldset>
-
-</form>
 </div>
-
 {% block script %}
-    <script type="text/javascript" src="{% static 'js/scriptss.js' %}"></script>
+
 {% endblock %}
 
     {% endblock %}

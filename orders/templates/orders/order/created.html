@@ -8,5 +8,5 @@
   <h1>Obrigado</h1>
   <p>Seu pedido foi concluido com sucesso. O número de seu pedido é:
   <strong>{{ order.id }}</strong>.</p>
-<button class="btn btn-primary"><a href="{% url 'orders:order_detail' order.id %}">pedidos</a></button>
+<button class="btn" ><a href="{% url 'orders:order_detail' order.id %}">Detalhes do pedidos</a></button>
 {% endblock %}
