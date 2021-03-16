@@ -1,32 +1,51 @@
 {% extends "base.html" %}
 
+{% load static %}
+{% load i18n %}
+
 {% block title %}
   Confira
 {% endblock %}
 
 {% block content %}
-  <h1>Confira</h1>
+<div class="container my-3">
+    <br>
+  <div class="row border">
+    <div class="col border">
+      <h2>Confira</h2>
 
-  <div class="order-info">
-    <h3>Seu pedido</h3>
-    <ul>
-      {% for item in cart %}
-        <li>
-          {{ item.quantidade }}x {{ item.doacao.titulo }}
-          <span>${{ item.total_peso }}</span>
-        </li>
-      {% endfor %}
-    </ul>
-    <p>Total: ${{ order.get_total_cost }}</p>
-  </div>
+    <div class="order-info">
+        <h5>Seu pedido</h5>
+        <ul>
+            {% for item in cart %}
+              <li>
+                  {{ item.quantidade }}x {{ item.doacao.titulo }}
+                  <span>${{ item.total_peso }}</span>
+              </li>
+            {% endfor %}
+        </ul>
+        <p>Total: ${{ order.get_total_cost }}</p>
+    </div>
 
-  <form method="post" class="order-form">
+    <form method="post" class="order-form">
 		{% csrf_token %}
         <!--{{ form.as_p }}-->
         <div class="form-group"><input class="form-control" type="text" name="usuario" placeholder="Nome" required value="{{ user.id }}" hidden></div>
 
-    <div class="form-group"><button class="btn btn-primary" type="submit">Confirmar pedido</button></div>
+        <div class="form-group"><button class="btn btn-primary" type="submit">Confirmar pedido</button></div>
 
 
-  </form>
+    </form>
+    </div>
+    <div class="col border">
+        <h2>Calculo do Frete</h2>
+        <br>
+        <p>Clique abaixo para direcionamento a página de calculo de frete</p>
+        <a href="https://www.frete-facil.com/frete/89618000-1_1_0_0_0-1_0-1-55-11-11-0-N-0-N-0/Novo" target="_blank" class="btn btn-primary">Calcular</a>
+
+    </div>
+
+  </div>
+</div>
+
 {% endblock %}

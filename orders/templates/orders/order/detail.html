@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 
+{% load static %}
+{% load i18n %}
+
 {% block title %}
-  Order {{ order.id }} {{ block.super }}
+    Pedido numero: {{ order.id }} {{ block.super }}
 {% endblock %}
 
 {% block content %}
-<h1>Pedido {{ order.id }}</h1>
-<ul class="object-tools">
-  <li>
-    <a href="#" onclick="window.print();">Imprimir pedido</a>
-  </li>
-</ul>
-<table>
+<div class="container my-3">
+    <h2>Pedido {{ order.id }}</h2>
+    <ul class="object-tools">
+        <li>
+            <a href="#" onclick="window.print();" class="btn btn-primary">Imprimir pedido</a>
+        </li>
+    </ul>
+<table class="border">
   <tr>
     <th>Criado</th>
     <td>{{ order.created }}</td>
@@ -38,7 +42,7 @@
   </tr>
 </table>
 <br>
-<div class="module">
+<div class="module border">
   <h2>Itens Solicitados</h2>
   <table style="width:100%">
     <thead>
@@ -64,5 +68,6 @@
       </tr>
     </tbody>
   </table>
+</div>
 </div>
 {% endblock %}
