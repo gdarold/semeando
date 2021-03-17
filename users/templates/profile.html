@@ -1,4 +1,6 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+
 {% load static %}
 
 
@@ -101,7 +103,7 @@
 </div>
 
 
-
+<!--
 
 <div class="container my-3 table-responsive">
 
@@ -175,10 +177,66 @@
 
 </div>
 
+-->
+
+
+<div class="container my-3">
+
+
+    <hr>
+
+    <h2>Minhas doações</h2>
+
+
+
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Tipo de Doação</th>
+                <th scope="col">Tipo de planta</th>
+                <th scope="col">Descricao</th>
+
+                <th scope="col">Peso</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Disponivel</th>
+                <th scope="col">Ações</th>
+
+            </tr>
+
+
+        </thead>
+        <tbody>
+            {% for doacao in doe %}
+                <tr class="bg-light">
+                    <td class="align-middle">{{ doacao.titulo }}</td>
+                    <td class="align-middle">{{ doacao.tipo_doacao }}</td>
+                    <td class="align-middle">{{ doacao.tipo_planta }}</td>
+                    <td class="align-middle">{{ doacao.descricao }}</td>
+
+                    <td class="align-middle">{{ doacao.peso }}</td>
+                    <td class="align-middle">{{ doacao.quantidade }}</td>
+                    <td class="align-middle">{{ doacao.is_available }}</td>
+                    <td class="align-middle"><a href="{% url 'doacao:update' doacao.id %}" class="edit-item">
+                        <i class="fas fa-edit"></i></a></td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<div>
 
 
 
 
 
 
-{% endblock%}
+    <a href="{% url 'doacao:new' %}" class="btn btn-primary">Nova Doação</a>
+
+</div>
+</div>
+
+
+
+{% endblock %}
